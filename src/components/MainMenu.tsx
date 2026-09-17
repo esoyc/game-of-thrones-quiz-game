@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Play, Trophy, ScrollText, MessageSquare, Crown } from 'lucide-react';
+import { Play, Trophy, ScrollText, MessageSquare } from 'lucide-react';
 
 type Props = {
   onPlay: () => void;
@@ -7,6 +7,26 @@ type Props = {
   onRules: () => void;
   onFeedback: () => void;
 };
+
+// Özel Ejderha (Dragon) SVG İkonu
+function DragonIcon({ className = 'w-14 h-14' }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 2C8 4 4 8 4 13c0 3 1.5 5.5 3 7.5l2-1.5c-1-1.5-2-3-2-5 0-3.5 3-6.5 7-9.5 4 3 7 6 7 9.5 0 2-1 3.5-2 5l2 1.5c1.5-2 3-4.5 3-7.5 0-5-4-9-8-11z" />
+      <path d="M12 6c-2 1.5-4 3.5-4 6 0 2 1 3.5 2 4.5" />
+      <path d="M12 6c2 1.5 4 3.5 4 6 0 2-1 3.5-2 4.5" />
+      <circle cx="12" cy="11" r="1" fill="currentColor" />
+    </svg>
+  );
+}
 
 export default function MainMenu({
   onPlay,
@@ -30,11 +50,7 @@ export default function MainMenu({
         className="text-center mb-12"
       >
         <div className="flex justify-center mb-6">
-          <Crown
-            size={56}
-            strokeWidth={1.2}
-            className="text-[#e6b322] drop-shadow-[0_0_15px_rgba(230,179,34,0.5)]"
-          />
+          <DragonIcon className="w-14 h-14 text-[#e6b322] drop-shadow-[0_0_18px_rgba(230,179,34,0.6)]" />
         </div>
         <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-wider leading-tight">
           <span className="shimmer-text">GAME OF THRONES</span>
