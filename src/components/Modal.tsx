@@ -29,21 +29,23 @@ export default function Modal({ open, onClose, title, icon, children }: Props) {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ type: 'spring', duration: 0.4 }}
-            className="glass-panel rounded-2xl p-6 sm:p-8 max-w-md w-full relative"
+            className="glass-panel rounded-2xl p-6 sm:p-8 max-w-lg w-full relative"
           >
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 text-[#7a7a7a] hover:text-[#e6b322] transition-colors"
+              className="absolute top-5 right-5 text-[#a0a0a0] hover:text-[#e6b322] transition-colors p-1"
             >
-              <X size={20} />
+              <X size={24} />
             </button>
-            <div className="flex items-center gap-3 mb-5">
+            <div className="flex items-center gap-3.5 mb-6">
               {icon}
-              <h2 className="font-display text-xl tracking-wider gold-text">
+              <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-wider gold-text">
                 {title}
               </h2>
             </div>
-            <div className="text-sm text-[#c8c6c0] leading-relaxed">{children}</div>
+            <div className="text-base sm:text-lg text-[#e8e6e0] leading-relaxed">
+              {children}
+            </div>
           </motion.div>
         </motion.div>
       )}
