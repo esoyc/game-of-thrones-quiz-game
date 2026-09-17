@@ -44,6 +44,6 @@ Westeros dünyasına özel kendim hazırladığım dinamik soru havuzu, canlı l
 Projeyi kendi bilgisayarınızda çalıştırıp geliştirmek için:
 
 1. **Repoyu klonlayın:**
-   ```bash
-   git clone [https://github.com/esoyc/game-of-thrones-quiz-game.git](https://github.com/esoyc/game-of-thrones-quiz-game.git)
-   cd game-of-thrones-quiz-game
+   ```bash
+   git clone https://github.com/esoyc/game-of-thrones-quiz-game.git
+   cd game-of-thrones-quiz-game
