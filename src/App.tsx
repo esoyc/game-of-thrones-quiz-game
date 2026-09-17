@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { ScrollText, MessageSquare, AlertCircle, Loader2 } from 'lucide-react';
 import AmbientBackground from '@/components/AmbientBackground';
+import BackgroundMusic from '@/components/BackgroundMusic';
 import MainMenu from '@/components/MainMenu';
 import QuizScreen from '@/components/QuizScreen';
 import GameOverScreen from '@/components/GameOverScreen';
@@ -97,6 +98,7 @@ export default function App() {
 
   return (
     <>
+      <BackgroundMusic />
       <AmbientBackground variant={screen === 'quiz' ? 'quiz' : screen === 'gameover' ? 'gameover' : 'menu'} />
 
       {/* Load error toast */}
