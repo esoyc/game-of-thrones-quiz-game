@@ -20,7 +20,8 @@
     margin: 0;
     background-color: var(--charcoal);
     color: #e8e6e0;
-    font-family: system-ui, -apple-system, Georgia, 'Times New Roman', serif;
+    /* Türkçe tam uyumlu epik serif font ailesi */
+    font-family: 'Cormorant Garamond', Georgia, serif;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 
@@ -47,8 +48,9 @@
 
 @layer components {
   .font-display {
-    font-family: system-ui, -apple-system, Georgia, 'Times New Roman', serif;
-    letter-spacing: 0.05em;
+    /* Başlıklar, skorlar ve özel alanlar için epik arayüz fontu */
+    font-family: 'Marcellus', Georgia, serif;
+    letter-spacing: 0.08em;
   }
 
   .gold-text {
@@ -79,8 +81,9 @@
   .btn-gold {
     background: linear-gradient(180deg, #f5cf5e 0%, #e6b322 40%, #c49a3f 100%);
     color: #0a0a0c;
+    font-family: 'Marcellus', Georgia, serif;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     text-transform-locale: tr;
     transition: all 0.3s ease;
@@ -100,8 +103,9 @@
   .btn-ghost {
     background: rgba(30, 30, 36, 0.6);
     color: #c49a3f;
+    font-family: 'Marcellus', Georgia, serif;
     border: 1px solid rgba(230, 179, 34, 0.3);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     text-transform-locale: tr;
     transition: all 0.3s ease;
