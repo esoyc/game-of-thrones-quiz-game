@@ -96,7 +96,7 @@ export default function MainMenu({
         transition={{ delay: 1, duration: 1 }}
         className="mt-12 text-[10px] tracking-[0.3em] text-[#7a7a7a] uppercase text-center"
       >
-        Kış Geliyor
+        FIRE & BLOOD
       </motion.p>
     </motion.div>
   );
