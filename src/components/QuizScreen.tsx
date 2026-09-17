@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, SkipForward, Check, X, AlertCircle } from 'lucide-react';
 import type { MappedQuestion, OptionKey } from '@/lib/supabase';
+import { playCorrectSound, playWrongSound } from '@/utils/audio';
 
 type Props = {
   questions: MappedQuestion[];
@@ -95,8 +96,10 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
 
     if (isCorrect) {
       setScore((s) => s + 100);
+      playCorrectSound(); // Doğru cevap melodisi
     } else {
       setScore((s) => s - 25);
+      playWrongSound(); // Yanlış cevap bas tonu
     }
 
     setTimeout(() => {
@@ -245,7 +248,7 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
                   >
                     {key}
                   </span>
-                  <span className="flex-1 text-sm sm:text-base text-[#e8e6e0]">
+                  <span className="flex-1 text-[#e8e6e0] text-sm sm:text-base">
                     {current.options[key]}
                   </span>
                   {locked && isCorrect && (
