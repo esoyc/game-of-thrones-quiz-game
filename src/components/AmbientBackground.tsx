@@ -7,7 +7,7 @@ type Props = {
 export default function AmbientBackground({ variant = 'menu' }: Props) {
   const embers = useMemo(
     () =>
-      Array.from({ length: 20 }, (_, i) => ({
+      Array.from({ length: 24 }, (_, i) => ({
         id: i,
         left: Math.random() * 100,
         delay: Math.random() * 8,
@@ -17,43 +17,44 @@ export default function AmbientBackground({ variant = 'menu' }: Props) {
     []
   );
 
-  const glowColor =
-    variant === 'quiz'
-      ? 'rgba(180, 50, 30, 0.15)'
-      : variant === 'gameover'
-      ? 'rgba(230, 179, 34, 0.18)'
-      : variant === 'leaderboard'
-      ? 'rgba(100, 150, 200, 0.12)'
-      : 'rgba(230, 179, 34, 0.12)';
-
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      {/* Base gradient */}
+      {/* 1. Arka Plan Görseli (Yavaş Zoom Animasyonlu) */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 animate-bg-zoom scale-105"
+        style={{
+          backgroundImage: `url('/got-bg.jpg')`,
+          filter:
+            variant === 'quiz'
+              ? 'brightness(0.35) contrast(1.1) saturate(0.9)'
+              : variant === 'gameover'
+              ? 'brightness(0.3) contrast(1.2) hue-rotate(-10deg)'
+              : variant === 'leaderboard'
+              ? 'brightness(0.4) contrast(1.1)'
+              : 'brightness(0.5) contrast(1.1)',
+        }}
+      />
+
+      {/* 2. Karartma ve Vignette Katmanları (Metin Okunabilirliği İçin) */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-transparent to-[#0a0a0c]/80 opacity-90" />
+      <div className="absolute inset-0 bg-radial-vignette opacity-80" />
+
+      {/* 3. Dinamik Renk Parlamaları */}
+      <div
+        className="absolute inset-0 transition-opacity duration-1000"
         style={{
           background:
-            'radial-gradient(ellipse at 50% 0%, #1a1a22 0%, #0a0a0c 60%), radial-gradient(ellipse at 50% 100%, #12121a 0%, transparent 70%)',
+            variant === 'quiz'
+              ? 'radial-gradient(circle at 50% 30%, rgba(230, 179, 34, 0.08) 0%, transparent 70%)'
+              : variant === 'gameover'
+              ? 'radial-gradient(circle at 50% 40%, rgba(180, 40, 40, 0.12) 0%, transparent 70%)'
+              : variant === 'leaderboard'
+              ? 'radial-gradient(circle at 50% 30%, rgba(100, 150, 200, 0.1) 0%, transparent 70%)'
+              : 'radial-gradient(circle at 50% 50%, rgba(230, 179, 34, 0.12) 0%, transparent 70%)',
         }}
       />
 
-      {/* Ambient glows */}
-      <div
-        className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vh] rounded-full blur-[120px]"
-        style={{
-          background: glowColor,
-          animation: 'ambient-glow 8s ease-in-out infinite',
-        }}
-      />
-      <div
-        className="absolute bottom-[-20%] right-[-10%] w-[55vw] h-[55vh] rounded-full blur-[120px]"
-        style={{
-          background: 'rgba(230, 179, 34, 0.08)',
-          animation: 'ambient-glow 10s ease-in-out infinite 2s',
-        }}
-      />
-
-      {/* Floating embers */}
+      {/* 4. Uçuşan Altın Kıvılcımlar (Ember Particles) */}
       {embers.map((e) => (
         <div
           key={e.id}
@@ -63,21 +64,12 @@ export default function AmbientBackground({ variant = 'menu' }: Props) {
             bottom: '-10px',
             width: `${e.size}px`,
             height: `${e.size}px`,
-            background: 'rgba(230, 179, 34, 0.7)',
-            boxShadow: '0 0 6px rgba(230, 179, 34, 0.6)',
+            background: 'rgba(245, 207, 94, 0.85)',
+            boxShadow: '0 0 8px #e6b322, 0 0 12px #f5cf5e',
             animation: `ember-float ${e.duration}s linear infinite ${e.delay}s`,
           }}
         />
       ))}
-
-      {/* Subtle texture overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'4\' height=\'4\'%3E%3Cpath d=\'M1 3h1v1H1V3zm2-2h1v1H3V1z\' fill=\'%23ffffff\'/%3E%3C/svg%3E")',
-        }}
-      />
     </div>
   );
 }
