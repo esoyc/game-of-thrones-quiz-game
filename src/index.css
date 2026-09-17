@@ -13,7 +13,6 @@
   }
 
   html {
-    /* Türkçe karakter dönüşümlerini (i -> İ) doğru yapması için */
     text-transform-locale: tr;
   }
 
@@ -21,8 +20,6 @@
     margin: 0;
     background-color: var(--charcoal);
     color: #e8e6e0;
-    /* Cinzel fontu Small-Caps olduğu için metin okunabilirliğini bozan temel sebep oydu. */
-    /* Yerine standart ve Türkçe tam uyumlu serif font ailesi tanımlandı. */
     font-family: system-ui, -apple-system, Georgia, 'Times New Roman', serif;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
@@ -35,7 +32,6 @@
 
 @layer components {
   .font-display {
-    /* Başlıklar ve özel alanlar için font yapısı */
     font-family: system-ui, -apple-system, Georgia, 'Times New Roman', serif;
     letter-spacing: 0.05em;
   }
@@ -71,7 +67,7 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    text-transform-locale: tr; /* Türkçe İ/I dönüşümü için */
+    text-transform-locale: tr;
     transition: all 0.3s ease;
     box-shadow:
       0 0 20px rgba(230, 179, 34, 0.3),
@@ -92,7 +88,7 @@
     border: 1px solid rgba(230, 179, 34, 0.3);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    text-transform-locale: tr; /* Türkçe İ/I dönüşümü için */
+    text-transform-locale: tr;
     transition: all 0.3s ease;
   }
 
@@ -141,4 +137,14 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(230, 179, 34, 0.5);
+}
+
+/* --- Mobil Dokunmatik / Focus Düzeltmeleri --- */
+button,
+button:focus,
+button:focus-visible,
+button:active {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
 }
