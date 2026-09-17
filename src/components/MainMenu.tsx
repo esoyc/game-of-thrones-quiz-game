@@ -59,11 +59,11 @@ export default function MainMenu({
           QUIZ
         </h2>
         <div className="mt-6 flex items-center gap-4 justify-center">
-          <span className="h-px w-16 bg-gradient-to-r from-transparent to-[#e6b322]/60" />
-          <span className="text-xs tracking-[0.4em] text-[#c49a3f]/70 uppercase">
+          <span className="h-px w-12 sm:w-16 bg-gradient-to-r from-transparent to-[#e6b322]/60" />
+          <span className="font-display text-sm sm:text-base tracking-[0.3em] text-[#e6b322]/90 uppercase font-medium">
             Westeros Bilgi Yarışması
           </span>
-          <span className="h-px w-16 bg-gradient-to-l from-transparent to-[#e6b322]/60" />
+          <span className="h-px w-12 sm:w-16 bg-gradient-to-l from-transparent to-[#e6b322]/60" />
         </div>
       </motion.div>
 
@@ -76,14 +76,14 @@ export default function MainMenu({
       >
         <button
           onClick={onPlay}
-          className="btn-gold rounded-lg py-4 px-8 flex items-center justify-center gap-3 text-base"
+          className="btn-gold rounded-lg py-4 px-8 flex items-center justify-center gap-3 text-base sm:text-lg"
         >
           <Play size={20} fill="currentColor" />
           Oyuna Başla
         </button>
         <button
           onClick={onLeaderboard}
-          className="btn-ghost rounded-lg py-4 px-8 flex items-center justify-center gap-3 text-sm"
+          className="btn-ghost rounded-lg py-4 px-8 flex items-center justify-center gap-3 text-sm sm:text-base"
         >
           <Trophy size={18} />
           Liderlik Tablosu
@@ -91,14 +91,14 @@ export default function MainMenu({
         <div className="flex gap-4">
           <button
             onClick={onRules}
-            className="btn-ghost rounded-lg py-3 px-4 flex-1 flex items-center justify-center gap-2 text-xs"
+            className="btn-ghost rounded-lg py-3.5 px-4 flex-1 flex items-center justify-center gap-2 text-xs sm:text-sm"
           >
             <ScrollText size={16} />
             Kurallar
           </button>
           <button
             onClick={onFeedback}
-            className="btn-ghost rounded-lg py-3 px-4 flex-1 flex items-center justify-center gap-2 text-xs"
+            className="btn-ghost rounded-lg py-3.5 px-4 flex-1 flex items-center justify-center gap-2 text-xs sm:text-sm"
           >
             <MessageSquare size={16} />
             Öneri / Şikayet
@@ -110,7 +110,7 @@ export default function MainMenu({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="mt-12 text-[10px] tracking-[0.3em] text-[#7a7a7a] uppercase text-center"
+        className="mt-12 font-display text-xs sm:text-sm tracking-[0.35em] text-[#a0a0a0] uppercase text-center"
       >
         FIRE & BLOOD
       </motion.p>
