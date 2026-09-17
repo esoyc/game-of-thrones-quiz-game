@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --gold: #e6b322;
+    --gold-dim: #c49a3f;
+    --gold-bright: #f5cf5e;
+    --charcoal: #0a0a0c;
+    --obsidian: #141418;
+    --obsidian-light: #1e1e24;
+  }
+
+  html {
+    /* Türkçe karakter dönüşümlerini (i -> İ) doğru yapması için */
+    text-transform-locale: tr;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--charcoal);
+    color: #e8e6e0;
+    /* Cinzel fontu Small-Caps olduğu için metin okunabilirliğini bozan temel sebep oydu. */
+    /* Yerine standart ve Türkçe tam uyumlu serif font ailesi tanımlandı. */
+    font-family: system-ui, -apple-system, Georgia, 'Times New Roman', serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .font-display {
+    /* Başlıklar ve özel alanlar için font yapısı */
+    font-family: system-ui, -apple-system, Georgia, 'Times New Roman', serif;
+    letter-spacing: 0.05em;
+  }
+
+  .gold-text {
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(230, 179, 34, 0.3);
+    background: linear-gradient(180deg, #f5cf5e 0%, #e6b322 50%, #c49a3f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gold-border {
+    border: 1px solid rgba(230, 179, 34, 0.4);
+    box-shadow:
+      0 0 0 1px rgba(230, 179, 34, 0.1),
+      0 4px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  .glass-panel {
+    background: linear-gradient(160deg, rgba(30, 30, 36, 0.85) 0%, rgba(10, 10, 12, 0.9) 100%);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(230, 179, 34, 0.2);
+    box-shadow:
+      0 0 40px rgba(0, 0, 0, 0.7),
+      inset 0 1px 0 rgba(230, 179, 34, 0.08);
+  }
+
+  .btn-gold {
+    background: linear-gradient(180deg, #f5cf5e 0%, #e6b322 40%, #c49a3f 100%);
+    color: #0a0a0c;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-transform-locale: tr; /* Türkçe İ/I dönüşümü için */
+    transition: all 0.3s ease;
+    box-shadow:
+      0 0 20px rgba(230, 179, 34, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-gold:hover {
+    background: linear-gradient(180deg, #fde88a 0%, #f5cf5e 40%, #e6b322 100%);
+    box-shadow:
+      0 0 35px rgba(230, 179, 34, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost {
+    background: rgba(30, 30, 36, 0.6);
+    color: #c49a3f;
+    border: 1px solid rgba(230, 179, 34, 0.3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-transform-locale: tr; /* Türkçe İ/I dönüşümü için */
+    transition: all 0.3s ease;
+  }
+
+  .btn-ghost:hover {
+    background: rgba(230, 179, 34, 0.1);
+    border-color: rgba(230, 179, 34, 0.6);
+    color: #f5cf5e;
+  }
+}
+
+@keyframes ambient-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+@keyframes ember-float {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.4; }
+  100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #c49a3f 0%, #f5cf5e 50%, #c49a3f 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0c;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(230, 179, 34, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(230, 179, 34, 0.5);
+}
