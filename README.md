@@ -31,9 +31,9 @@ Westeros dünyasına özel kendim hazırladığım dinamik soru havuzu, canlı l
 
 ## 📸 Ekran Görüntüleri
 
-| Ana Ekran / Quiz Arayüzü | Liderlik Tablosu & Sonuçlar |
+| Ana Menü | Quiz Ekranı |
 | :---: | :---: |
-| ![Quiz Ekranı](./public/screenshot-1.png) | ![Liderlik Tablosu](./public/screenshot-2.png) |
+| ![Ana Menü](./public/screenshot-1.png) | ![Quiz Ekranı](./public/screenshot-2.png) |
 
 ---
 
