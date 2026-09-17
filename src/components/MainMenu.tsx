@@ -8,19 +8,6 @@ type Props = {
   onFeedback: () => void;
 };
 
-// Kanatları Açık Targaryen Stili Epik Ejderha Silüeti
-function DragonIcon({ className = 'w-16 h-16' }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-    >
-      <path d="M12 1.5l-1.8 3.2-3.6.3 2.5 2.6-.7 3.6 3.3-1.6 3.3 1.6-.7-3.6 2.5-2.6-3.6-.3L12 1.5zm-8.5 7c.8 1.4 2.3 2.5 4 3-1.2 1.5-2.8 2.6-4.5 3.1 1.8 1.2 4 1.8 6.3 1.6-1.5 1.5-3.3 2.6-5.3 3.3 3-.2 5.8-1.5 8-3.5 2.2 2 5 3.3 8 3.5-2-.7-3.8-1.8-5.3-3.3 2.3.2 4.5-.4 6.3-1.6-1.7-.5-3.3-1.6-4.5-3.1 1.7-.5 3.2-1.6 4-3-2.1.8-4.3.9-6.5.3 1.2-1.2 2.1-2.7 2.5-4.3-1.8 1.1-3.8 1.6-5.8 1.5-2 .1-4-.4-5.8-1.5.4 1.6 1.3 3.1 2.5 4.3-2.2.6-4.4.5-6.5-.3z"/>
-    </svg>
-  );
-}
-
 export default function MainMenu({
   onPlay,
   onLeaderboard,
@@ -35,16 +22,22 @@ export default function MainMenu({
       transition={{ duration: 0.6 }}
       className="min-h-screen flex flex-col items-center justify-center px-6 py-12"
     >
-      {/* Title */}
+      {/* Title & AI Dragon Logo */}
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.8, type: 'spring' }}
         className="text-center mb-12"
       >
-        <div className="flex justify-center mb-6">
-          <DragonIcon className="w-16 h-16 text-[#e6b322] drop-shadow-[0_0_20px_rgba(230,179,34,0.6)]" />
+        {/* Şeffaf AI Üretimi Ejderha Logosu */}
+        <div className="flex justify-center mb-4">
+          <img
+            src="/dragon-logo.png"
+            alt="Targaryen Dragon Logo"
+            className="w-20 h-20 sm:w-24 sm:h-24 object-contain filter drop-shadow-[0_0_20px_rgba(230,179,34,0.65)] hover:scale-105 transition-transform duration-300"
+          />
         </div>
+
         <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-wider leading-tight">
           <span className="shimmer-text">GAME OF THRONES</span>
         </h1>
