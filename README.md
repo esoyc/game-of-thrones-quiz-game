@@ -1,5 +1,7 @@
 # 🐉 Game of Thrones Quiz Game
 
+🔗 **[Canlı Demo'yu İnceleyin](https://got-quiz-game.vercel.app/)**
+
 Westeros dünyasına özel kendim hazırladığım dinamik soru havuzu, canlı liderlik tablosu, Web Audio API ses efektleri ve atmosferik arka plan müziği ile geliştirilmiş full-stack quiz uygulaması.
 
 ![Project Status](https://img.shields.io/badge/status-active-brightgreen)
