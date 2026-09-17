@@ -23,6 +23,21 @@
     font-family: system-ui, -apple-system, Georgia, 'Times New Roman', serif;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+
+    /* Metin seçimini engelleme (Oyun hissi verir) */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Input ve Textarea alanlarında kullanıcıların yazı seçebilmesine izin ver */
+  input,
+  textarea {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
   }
 
   * {
