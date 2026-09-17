@@ -81,7 +81,8 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
     };
   }, [finishGame]);
 
-  const handleSelect = (option: OptionKey) => {
+  const handleSelect = (e: React.MouseEvent<HTMLButtonElement>, option: OptionKey) => {
+    e.currentTarget.blur(); // Mobilde odağı (focus) kaldırır
     if (answerState?.locked) return;
     if (!current) return;
 
@@ -96,10 +97,10 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
 
     if (isCorrect) {
       setScore((s) => s + 100);
-      playCorrectSound(); // Doğru cevap melodisi
+      playCorrectSound();
     } else {
       setScore((s) => s - 25);
-      playWrongSound(); // Yanlış cevap bas tonu
+      playWrongSound();
     }
 
     setTimeout(() => {
@@ -107,7 +108,8 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
     }, 1200);
   };
 
-  const handleSkip = () => {
+  const handleSkip = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.currentTarget.blur(); // Mobilde odağı kaldırır
     if (answerState?.locked) return;
     setAnswerState(null);
     advanceRef.current?.();
@@ -216,7 +218,7 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
             const locked = answerState?.locked;
 
             let cls =
-              'border-[#3a3a44] bg-[#1a1a20] hover:border-[#e6b322]/50 hover:bg-[#22221a]';
+              'border-[#3a3a44] bg-[#1a1a20] sm:hover:border-[#e6b322]/50 sm:hover:bg-[#22221a]';
             if (locked) {
               if (isCorrect) {
                 cls = 'border-green-500 bg-green-900/30';
@@ -233,7 +235,7 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
                 whileHover={!locked ? { scale: 1.02 } : {}}
                 whileTap={!locked ? { scale: 0.98 } : {}}
                 disabled={locked}
-                onClick={() => handleSelect(key)}
+                onClick={(e) => handleSelect(e, key)}
                 className={`relative rounded-xl p-4 border-2 text-left transition-all duration-300 ${cls}`}
               >
                 <div className="flex items-center gap-3">
