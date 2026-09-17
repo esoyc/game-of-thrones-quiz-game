@@ -82,7 +82,7 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
   }, [finishGame]);
 
   const handleSelect = (e: React.MouseEvent<HTMLButtonElement>, option: OptionKey) => {
-    e.currentTarget.blur(); // Mobilde odağı (focus) kaldırır
+    e.currentTarget.blur();
     if (answerState?.locked) return;
     if (!current) return;
 
@@ -109,7 +109,7 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
   };
 
   const handleSkip = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.currentTarget.blur(); // Mobilde odağı kaldırır
+    e.currentTarget.blur();
     if (answerState?.locked) return;
     setAnswerState(null);
     advanceRef.current?.();
@@ -136,29 +136,29 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
 
   return (
     <div className="min-h-screen flex flex-col px-4 py-6 sm:py-8">
-      {/* Top bar */}
-      <div className="flex items-center justify-between mb-6 max-w-3xl w-full mx-auto">
+      {/* Top bar (Mobilde sağdan padding eklenerek müzik butonu için alan bırakıldı) */}
+      <div className="flex items-center justify-between mb-6 max-w-3xl w-full mx-auto pr-12 sm:pr-0">
         <button
           onClick={onExit}
           className="text-[#7a7a7a] hover:text-[#e6b322] text-xs tracking-widest uppercase transition-colors"
         >
           ← Çık
         </button>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4 sm:gap-6">
           <div className="text-center">
             <div className="text-[10px] tracking-widest text-[#7a7a7a] uppercase">
               Soru
             </div>
-            <div className="font-display text-lg text-[#e6b322]">
+            <div className="font-display text-base sm:text-lg text-[#e6b322]">
               {currentIndex + 1}
-              <span className="text-[#7a7a7a] text-sm">/{questions.length}</span>
+              <span className="text-[#7a7a7a] text-xs sm:text-sm">/{questions.length}</span>
             </div>
           </div>
           <div className="text-center">
             <div className="text-[10px] tracking-widest text-[#7a7a7a] uppercase">
               Skor
             </div>
-            <div className="font-display text-lg text-[#e6b322]">
+            <div className="font-display text-base sm:text-lg text-[#e6b322]">
               {score}
             </div>
           </div>
