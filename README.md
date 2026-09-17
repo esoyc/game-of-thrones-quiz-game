@@ -43,5 +43,5 @@ Projeyi kendi bilgisayarınızda çalıştırıp geliştirmek için:
 
 1. **Repoyu klonlayın:**
    ```bash
-   git clone [https://github.com/esoyc/got-quiz-app.git](https://github.com/esoyc/got-quiz-app.git)
-   cd got-quiz-app
+   git clone [https://github.com/esoyc/game-of-thrones-quiz-game.git](https://github.com/esoyc/game-of-thrones-quiz-game.git)
+   cd game-of-thrones-quiz-game
