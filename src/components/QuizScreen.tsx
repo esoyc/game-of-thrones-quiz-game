@@ -136,15 +136,16 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
 
   return (
     <div className="min-h-screen flex flex-col px-4 py-6 sm:py-8">
-      {/* Top bar (Mobilde sağdan padding eklenerek müzik butonu için alan bırakıldı) */}
-      <div className="flex items-center justify-between mb-6 max-w-3xl w-full mx-auto pr-12 sm:pr-0">
+      {/* Top bar (Telefonda soru ve skor ortalandı, masaüstünde eski sağa yatık haline döner) */}
+      <div className="flex items-center justify-between mb-6 max-w-3xl w-full mx-auto">
         <button
           onClick={onExit}
-          className="text-[#7a7a7a] hover:text-[#e6b322] text-xs tracking-widest uppercase transition-colors"
+          className="text-[#7a7a7a] hover:text-[#e6b322] text-xs tracking-widest uppercase transition-colors shrink-0"
         >
           ← Çık
         </button>
-        <div className="flex items-center gap-4 sm:gap-6">
+        
+        <div className="flex-1 flex items-center justify-center sm:justify-end gap-6 sm:pr-0 pr-6">
           <div className="text-center">
             <div className="text-[10px] tracking-widest text-[#7a7a7a] uppercase">
               Soru
