@@ -29,7 +29,6 @@ type GameResult = {
   total: number;
 };
 
-// Diziyi rastgele karıştırmak için yardımcı fonksiyon
 function shuffle<T>(array: T[]): T[] {
   const result = [...array];
   for (let i = result.length - 1; i > 0; i--) {
@@ -47,11 +46,14 @@ export default function App() {
   const [feedbackOpen, setFeedbackOpen] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(null);
 
+  // Feedback State
+  const [feedbackText, setFeedbackText] = useState('');
+  const [isSendingFeedback, setIsSendingFeedback] = useState(false);
+
   const startGame = useCallback(async () => {
     setScreen('loading');
     setLoadError(null);
     try {
-      // Vercel üzerindeki API'den verileri çekecek
       const res = await fetch('/api/questions');
       if (!res.ok) throw new Error('Sorular veritabanından alınamadı.');
       const data = await res.json();
@@ -70,6 +72,28 @@ export default function App() {
     },
     []
   );
+
+  // Öneri / Şikayet Gönderme Fonksiyonu
+  const handleSendFeedback = async () => {
+    if (!feedbackText.trim()) return;
+    setIsSendingFeedback(true);
+    try {
+      const res = await fetch('/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: feedbackText }),
+      });
+      if (!res.ok) throw new Error('Gönderilemedi');
+      
+      alert('Görüşün Westeros diyarlarına başarıyla ulaştı!');
+      setFeedbackText('');
+      setFeedbackOpen(false);
+    } catch (e) {
+      alert('Geri bildirim gönderilirken bir hata oluştu.');
+    } finally {
+      setIsSendingFeedback(false);
+    }
+  };
 
   return (
     <>
@@ -183,13 +207,16 @@ export default function App() {
         <textarea
           rows={4}
           placeholder="Mesajını buraya yaz..."
+          value={feedbackText}
+          onChange={(e) => setFeedbackText(e.target.value)}
           className="w-full bg-[#14141a] border border-[#3a3a44] rounded-lg px-4 py-3 text-sm text-[#e8e6e0] placeholder:text-[#5a5a5a] focus:border-[#e6b322]/50 focus:outline-none resize-none"
         />
         <button
-          onClick={() => setFeedbackOpen(false)}
-          className="btn-gold rounded-lg py-2.5 px-6 w-full mt-4 text-sm"
+          onClick={handleSendFeedback}
+          disabled={isSendingFeedback || !feedbackText.trim()}
+          className="btn-gold rounded-lg py-2.5 px-6 w-full mt-4 text-sm disabled:opacity-50"
         >
-          Gönder
+          {isSendingFeedback ? 'Gönderiliyor...' : 'Gönder'}
         </button>
         <p className="text-[10px] text-[#5a5a5a] text-center mt-3 tracking-wider">
           Teşekkür ederiz. Kış geliyor.
