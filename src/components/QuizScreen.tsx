@@ -136,7 +136,7 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
 
   return (
     <div className="min-h-screen flex flex-col px-4 py-6 sm:py-8 select-none">
-      {/* Top bar */}
+      {/* Top bar (Soru sayacı kaldırıldı, Skor sağa sabitlendi) */}
       <div className="flex items-center justify-between mb-4 sm:mb-6 max-w-3xl w-full mx-auto">
         <button
           onClick={onExit}
@@ -145,23 +145,12 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
           ← Çık
         </button>
 
-        <div className="flex-1 flex items-center justify-center sm:justify-end gap-6 sm:pr-0 pr-6">
-          <div className="text-center">
-            <div className="font-display text-xs sm:text-sm tracking-widest text-[#a0a0a0] uppercase">
-              Soru
-            </div>
-            <div className="font-display text-lg sm:text-xl text-[#e6b322] font-bold">
-              {currentIndex + 1}
-              <span className="text-[#a0a0a0] text-sm sm:text-base font-normal">/{questions.length}</span>
-            </div>
+        <div className="text-center">
+          <div className="font-display text-xs sm:text-sm tracking-widest text-[#a0a0a0] uppercase">
+            Skor
           </div>
-          <div className="text-center">
-            <div className="font-display text-xs sm:text-sm tracking-widest text-[#a0a0a0] uppercase">
-              Skor
-            </div>
-            <div className="font-display text-lg sm:text-xl text-[#e6b322] font-bold">
-              {score}
-            </div>
+          <div className="font-display text-lg sm:text-xl text-[#e6b322] font-bold">
+            {score}
           </div>
         </div>
       </div>
@@ -194,7 +183,7 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
         </div>
       </div>
 
-      {/* Question area (Üste hizalama yapıldı: justify-start + gap-4) */}
+      {/* Question area */}
       <div className="max-w-3xl w-full mx-auto flex-1 flex flex-col justify-start gap-4 sm:gap-5">
         <div className="min-h-[120px] sm:min-h-[140px] flex items-center justify-center">
           <AnimatePresence mode="wait">
