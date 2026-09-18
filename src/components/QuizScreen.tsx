@@ -135,8 +135,8 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
   const isLow = timeLeft <= 10;
 
   return (
-    <div className="min-h-screen flex flex-col px-4 py-6 sm:py-8">
-      {/* Top bar (Boyutlar büyütüldü & mobil görünümde ortalı) */}
+    <div className="min-h-screen flex flex-col px-4 py-6 sm:py-8 select-none">
+      {/* Top bar */}
       <div className="flex items-center justify-between mb-6 max-w-3xl w-full mx-auto">
         <button
           onClick={onExit}
@@ -144,7 +144,7 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
         >
           ← Çık
         </button>
-        
+
         <div className="flex-1 flex items-center justify-center sm:justify-end gap-6 sm:pr-0 pr-6">
           <div className="text-center">
             <div className="font-display text-xs sm:text-sm tracking-widest text-[#a0a0a0] uppercase">
@@ -194,24 +194,26 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
         </div>
       </div>
 
-      {/* Question card */}
-      <div className="max-w-3xl w-full mx-auto flex-1 flex flex-col">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.3 }}
-            className="glass-panel rounded-2xl p-6 sm:p-8 mb-6"
-          >
-            <p className="font-display text-xl sm:text-2xl leading-relaxed text-[#e8e6e0]">
-              {current.question_text}
-            </p>
-          </motion.div>
-        </AnimatePresence>
+      {/* Question area (Sabit min-yükseklik ile zıplama önlendi) */}
+      <div className="max-w-3xl w-full mx-auto flex-1 flex flex-col justify-between">
+        <div className="min-h-[140px] sm:min-h-[160px] flex items-center justify-center mb-6">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2, ease: 'easeInOut' }}
+              className="glass-panel rounded-2xl p-6 sm:p-8 w-full"
+            >
+              <p className="font-display text-xl sm:text-2xl leading-relaxed text-[#e8e6e0] text-center sm:text-left">
+                {current.question_text}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
-        {/* Options (Şık harfleri ve seçenek yazıları büyütüldü) */}
+        {/* Options */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-6">
           {OPTION_LABELS.map((key) => {
             const isSelected = answerState?.selected === key;
@@ -233,15 +235,15 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
             return (
               <motion.button
                 key={key}
-                whileHover={!locked ? { scale: 1.02 } : {}}
-                whileTap={!locked ? { scale: 0.98 } : {}}
+                whileHover={!locked ? { scale: 1.01 } : {}}
+                whileTap={!locked ? { scale: 0.99 } : {}}
                 disabled={locked}
                 onClick={(e) => handleSelect(e, key)}
-                className={`relative rounded-xl p-4 border-2 text-left transition-all duration-300 ${cls}`}
+                className={`relative rounded-xl p-4 border-2 text-left transition-all duration-200 ${cls}`}
               >
                 <div className="flex items-center gap-3.5">
                   <span
-                    className={`font-display text-lg sm:text-xl w-10 h-10 rounded-lg flex items-center justify-center border ${
+                    className={`font-display text-lg sm:text-xl w-10 h-10 rounded-lg flex items-center justify-center border shrink-0 ${
                       locked && isCorrect
                         ? 'border-green-500 text-green-400'
                         : locked && isSelected && !isCorrect
@@ -255,10 +257,10 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
                     {current.options[key]}
                   </span>
                   {locked && isCorrect && (
-                    <Check size={22} className="text-green-400" />
+                    <Check size={22} className="text-green-400 shrink-0" />
                   )}
                   {locked && isSelected && !isCorrect && (
-                    <X size={22} className="text-red-400" />
+                    <X size={22} className="text-red-400 shrink-0" />
                   )}
                 </div>
               </motion.button>
@@ -267,7 +269,7 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
         </div>
 
         {/* Skip */}
-        <div className="flex justify-center">
+        <div className="flex justify-center pb-4">
           <button
             onClick={handleSkip}
             disabled={answerState?.locked}
