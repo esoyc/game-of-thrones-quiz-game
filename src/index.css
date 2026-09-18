@@ -20,19 +20,16 @@
     margin: 0;
     background-color: var(--charcoal);
     color: #e8e6e0;
-    /* Türkçe tam uyumlu epik serif font ailesi */
     font-family: 'Cormorant Garamond', Georgia, serif;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 
-    /* Metin seçimini engelleme (Oyun hissi verir) */
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
   }
 
-  /* Input ve Textarea alanlarında kullanıcıların yazı seçebilmesine izin ver */
   input,
   textarea {
     -webkit-user-select: text;
@@ -48,7 +45,6 @@
 
 @layer components {
   .font-display {
-    /* Başlıklar, skorlar ve özel alanlar için epik arayüz fontu */
     font-family: 'Marcellus', Georgia, serif;
     letter-spacing: 0.08em;
   }
@@ -158,17 +154,21 @@
   background: rgba(230, 179, 34, 0.5);
 }
 
-/* --- Mobil Dokunmatik / Focus Düzeltmeleri --- */
+/* Mobil Dokunmatik & Odaklanma (Focus/Zoom) Düzeltmeleri */
 button,
+a {
+  -webkit-tap-highlight-color: transparent !important;
+  user-select: none;
+}
+
 button:focus,
 button:focus-visible,
 button:active {
   outline: none !important;
-  box-shadow: none !important;
-  -webkit-tap-highlight-color: transparent;
+  box-shadow: none;
 }
 
-/* --- Arka Plan Görsel Animasyonları --- */
+/* Arka Plan Görsel Animasyonları */
 @keyframes bg-zoom {
   0% { transform: scale(1.02); }
   50% { transform: scale(1.08); }
@@ -179,7 +179,6 @@ button:active {
   animation: bg-zoom 25s ease-in-out infinite alternate;
 }
 
-/* Ekran kenarlarını sinematik karartan vignette katmanı */
 .bg-radial-vignette {
   background: radial-gradient(circle, transparent 40%, rgba(10, 10, 12, 0.85) 100%);
 }
