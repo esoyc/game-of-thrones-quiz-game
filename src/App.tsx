@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { ScrollText, MessageSquare, AlertCircle, Loader2 } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 import AmbientBackground from '@/components/AmbientBackground';
 import BackgroundMusic from '@/components/BackgroundMusic';
 import MainMenu from '@/components/MainMenu';
@@ -224,6 +225,7 @@ export default function App() {
           Teşekkür ederiz. Kış geliyor.
         </p>
       </Modal>
+      <Analytics />
     </>
   );
 }
