@@ -172,7 +172,7 @@ export default function App() {
         <ul className="space-y-3">
           <li className="flex gap-3">
             <span className="text-[#e6b322]">•</span>
-            <span>120 saniyelik genel süre dolmadan tüm soruları cevapla.</span>
+            <span>120 saniyelik süre dolmadan olabildiğince çok soruyu doğru yanıtla ve en yüksek skoru topla.</span>
           </li>
           <li className="flex gap-3">
             <span className="text-[#e6b322]">•</span>
