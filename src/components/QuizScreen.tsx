@@ -194,7 +194,7 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
         </div>
       </div>
 
-      {/* Question area (Sabit min-yükseklik ile zıplama önlendi) */}
+      {/* Question area */}
       <div className="max-w-3xl w-full mx-auto flex-1 flex flex-col justify-between">
         <div className="min-h-[140px] sm:min-h-[160px] flex items-center justify-center mb-6">
           <AnimatePresence mode="wait">
@@ -220,8 +220,10 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
             const isCorrect = answerState?.correct === key;
             const locked = answerState?.locked;
 
+            // Sadece gerçek imleç (mouse) destekleyen cihazlarda hover tetiklenir
             let cls =
-              'border-[#3a3a44] bg-[#1a1a20] sm:hover:border-[#e6b322]/50 sm:hover:bg-[#22221a]';
+              'border-[#3a3a44] bg-[#1a1a20] [@media(hover:hover)]:hover:border-[#e6b322]/50 [@media(hover:hover)]:hover:bg-[#22221a]';
+            
             if (locked) {
               if (isCorrect) {
                 cls = 'border-green-500 bg-green-900/30';
