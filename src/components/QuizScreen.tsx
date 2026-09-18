@@ -167,7 +167,7 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
       </div>
 
       {/* Timer bar */}
-      <div className="max-w-3xl w-full mx-auto mb-8">
+      <div className="max-w-3xl w-full mx-auto mb-6 sm:mb-8">
         <div className="flex items-center gap-3 mb-2">
           <Clock
             size={20}
@@ -194,9 +194,9 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
         </div>
       </div>
 
-      {/* Question area */}
-      <div className="max-w-3xl w-full mx-auto flex-1 flex flex-col justify-between">
-        <div className="min-h-[140px] sm:min-h-[160px] flex items-center justify-center mb-6">
+      {/* Question area (Boşluğu kapatmak için justify-center ve gap-6 kullanıldı) */}
+      <div className="max-w-3xl w-full mx-auto flex-1 flex flex-col justify-center gap-6">
+        <div className="min-h-[130px] sm:min-h-[150px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
@@ -214,13 +214,12 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
         </div>
 
         {/* Options */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           {OPTION_LABELS.map((key) => {
             const isSelected = answerState?.selected === key;
             const isCorrect = answerState?.correct === key;
             const locked = answerState?.locked;
 
-            // Sadece gerçek imleç (mouse) destekleyen cihazlarda hover tetiklenir
             let cls =
               'border-[#3a3a44] bg-[#1a1a20] [@media(hover:hover)]:hover:border-[#e6b322]/50 [@media(hover:hover)]:hover:bg-[#22221a]';
             
@@ -271,7 +270,7 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
         </div>
 
         {/* Skip */}
-        <div className="flex justify-center pb-4">
+        <div className="flex justify-center pt-2 pb-4">
           <button
             onClick={handleSkip}
             disabled={answerState?.locked}
