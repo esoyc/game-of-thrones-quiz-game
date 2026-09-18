@@ -137,7 +137,7 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
   return (
     <div className="min-h-screen flex flex-col px-4 py-6 sm:py-8 select-none">
       {/* Top bar */}
-      <div className="flex items-center justify-between mb-6 max-w-3xl w-full mx-auto">
+      <div className="flex items-center justify-between mb-4 sm:mb-6 max-w-3xl w-full mx-auto">
         <button
           onClick={onExit}
           className="font-display text-[#a0a0a0] hover:text-[#e6b322] text-sm sm:text-base tracking-widest uppercase transition-colors shrink-0"
@@ -167,7 +167,7 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
       </div>
 
       {/* Timer bar */}
-      <div className="max-w-3xl w-full mx-auto mb-6 sm:mb-8">
+      <div className="max-w-3xl w-full mx-auto mb-4 sm:mb-6">
         <div className="flex items-center gap-3 mb-2">
           <Clock
             size={20}
@@ -194,9 +194,9 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
         </div>
       </div>
 
-      {/* Question area (Boşluğu kapatmak için justify-center ve gap-6 kullanıldı) */}
-      <div className="max-w-3xl w-full mx-auto flex-1 flex flex-col justify-center gap-6">
-        <div className="min-h-[130px] sm:min-h-[150px] flex items-center justify-center">
+      {/* Question area (Üste hizalama yapıldı: justify-start + gap-4) */}
+      <div className="max-w-3xl w-full mx-auto flex-1 flex flex-col justify-start gap-4 sm:gap-5">
+        <div className="min-h-[120px] sm:min-h-[140px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
@@ -214,7 +214,7 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
         </div>
 
         {/* Options */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
           {OPTION_LABELS.map((key) => {
             const isSelected = answerState?.selected === key;
             const isCorrect = answerState?.correct === key;
@@ -270,7 +270,7 @@ export default function QuizScreen({ questions, onFinish, onExit }: Props) {
         </div>
 
         {/* Skip */}
-        <div className="flex justify-center pt-2 pb-4">
+        <div className="flex justify-center pt-1 pb-4">
           <button
             onClick={handleSkip}
             disabled={answerState?.locked}
